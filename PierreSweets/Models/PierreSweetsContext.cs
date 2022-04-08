@@ -5,9 +5,9 @@ namespace PierreSweets.Models
 {
   public class PierreSweetsContext : IdentityDbContext<ApplicationUser>
   {
-    public DbSet<Flavor> Flavor { get; set; }
+    public DbSet<Flavor> Flavors { get; set; }
     public DbSet<Treat> Treats { get; set; }
-    public DbSet<FlavorTreats> FlavorTreats { get; set; }
+    public DbSet<FlavorTreat> FlavorTreats { get; set; }
 
     public PierreSweetsContext(DbContextOptions options) : base(options) { }
 

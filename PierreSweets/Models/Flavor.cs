@@ -1,14 +1,18 @@
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace PierreSweets.Models
 {
   public class Flavor
   {
-    [Key]
-    public int FlavorId { get; set; }
+    public Flavor()
+    {
+      this.FlavorTreatEntities = new HashSet<FlavorTreat>();
+    }
 
-    [Required(ErrorMessage = "Please enter flavor name")]
+    public int FlavorId { get; set; }
     public string FlavorName { get; set; }
+    public virtual ApplicationUser User { get; set; }
+
+    public virtual ICollection<FlavorTreat> FlavorTreatEntities { get;}
   }
 }
