@@ -1,0 +1,16 @@
+14 lines (12 sloc)  299 Bytes
+   
+@{
+  Layout = "_Layout";
+}
+
+@model PierreSweets.Models.Treat
+
+<h4>Add a new task</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName)
+  @Html.TextBoxFor(model => model.TreatName)
+  <input type="submit" value="Add new treat" />
+}
+<p>@Html.ActionLink("Show all treats", "Index")</p>
