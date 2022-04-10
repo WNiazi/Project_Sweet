@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PierreSweets.Models;
 using Microsoft.AspNetCore.Identity;
+using PierreSweets.Models; 
 
 namespace PierreSweets
 {
@@ -33,8 +33,16 @@ namespace PierreSweets
             .AddEntityFrameworkStores<PierreSweetsContext>()
             .AddDefaultTokenProviders();
    
+      services.Configure<IdentityOptions>(options =>
+      {
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 0;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredUniqueChars = 0;
+      });
     }
-
     public void Configure(IApplicationBuilder app)
     {
       app.UseDeveloperExceptionPage();
@@ -44,7 +52,7 @@ namespace PierreSweets
 
       app.UseEndpoints(routes =>
       {
-        routes.MapControllerRoute("default", "{controller=Books}/{action=Index}/{id?}");
+        routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
       });
 
       app.UseStaticFiles();
