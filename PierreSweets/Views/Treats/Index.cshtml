@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierreSweets.Models;
+@model IEnumerable<PierreSweets.Models.Treat>
+
+<h1>Treats Available: </h1>
+
+
+@if (Model.Any())
+{
+
+<ul>
+  @foreach (Treat treat in Model)
+  {
+    <li>@Html.ActionLink($"{treat.TreatName}", "Details", new { id = treat.TreatId })</li>
+  }
+</ul>
+}
+else 
+{
+<h4> No treats have been added</h4>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+@if (User.Identity.IsAuthenticated)
+{
+<p>@Html.ActionLink("Add new treat", "Create")</p>
+}
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
